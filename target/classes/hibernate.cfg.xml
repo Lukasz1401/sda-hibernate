@@ -1,0 +1,21 @@
+<hibernate-configuration>
+    <session-factory>
+        <property name="dialect">org.hibernate.dialect.MySQL57Dialect</property>
+        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
+        <property name="connection.url">jdbc:mysql://localhost:3306/jdbc_schema?serverTimezone=Europe/Warsaw</property>
+        <property name="connection.username">root</property>
+        <property name="connection.password">Mojehaslo1</property>
+        <property name="hbm2ddl.auto">update</property>
+        <property name="show_sql">true</property>
+        <property name="format_sql">false</property>
+        <property name="use.sql_comments">true</property>
+        <mapping class="com.sda.entity.Dog"/>
+        <mapping class="com.sda.entity.Employee"/>
+        <mapping class="com.sda.entity.Husband"/>
+        <mapping class="com.sda.entity.Wife"/>
+        <mapping class="com.sda.entity.Client"/>
+        <mapping class="com.sda.entity.Book"/>
+        <mapping class="com.sda.entity.Student"/>
+        <mapping class="com.sda.entity.School"/>
+    </session-factory>
+</hibernate-configuration>

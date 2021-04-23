@@ -1,0 +1,11 @@
+com\sda\entity\Gender.class
+com\sda\hibernate\Main7Annotations.class
+com\sda\hibernate\Main6DeleteEntity.class
+com\sda\hibernate\Main5UpdateEntity.class
+com\sda\hibernate\Main2PersistEntity.class
+com\sda\hibernate\Main1Preparation.class
+com\sda\hibernate\Main3PersistExample.class
+com\sda\hibernate\Main4FindEntity.class
+com\sda\hibernate\HibernateUtils.class
+com\sda\entity\Dog.class
+com\sda\entity\Employee.class
