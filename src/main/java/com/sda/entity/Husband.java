@@ -5,12 +5,17 @@ import javax.persistence.*;
 @Entity
 public class Husband {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE, CascadeType.REMOVE}, orphanRemoval = true)
-    @JoinColumn(name = "my_wife_id")
-    Wife wife;
+    // orphanRemoval ustawione na true informuje, że z bazy zostaną usunięte encje Wife, które straciły relację z Husband
+    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)              // CascadeType.ALL powoduje, że operacje wykonywane na encji Husband są propagowane na encję Wife np. session.persist
+    @JoinColumn(name = "my_wife_id")                                        // @JoinColumn - nadpisujemy domyślną nazwę kolumny klucza obcego, który zarządza relacją
+            Wife wife;
+
+    public Husband() {
+    }
 
     public Husband(String name) {
         this.name = name;
@@ -21,7 +26,20 @@ public class Husband {
         this.wife = wife;
     }
 
-    public Husband() {
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Wife getWife() {
