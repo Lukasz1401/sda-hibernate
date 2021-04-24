@@ -5,23 +5,34 @@ import javax.persistence.*;
 @Entity
 public class Wife {
 
-    @Id@GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     Long id;
     String name;
-    @OneToOne(mappedBy = "wife", cascade = CascadeType.PERSIST)
+    @OneToOne(mappedBy = "wife")                        // informacja, że relacja jest zarządzana przez pole wife w encji Husband, która jest właścicielem relacji
     Husband husband;
+
+    public Wife() {
+    }
 
     public Wife(String name) {
         this.name = name;
     }
 
-    public Wife(String name, Husband husband) {
-        this.name = name;
-        this.husband = husband;
-        husband.setWife(this);
+    public Long getId() {
+        return id;
     }
 
-    public Wife() {
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getName() {
+        return name;
+    }
+
+    public void setName(String name) {
+        this.name = name;
     }
 
     public Husband getHusband() {
@@ -29,7 +40,7 @@ public class Wife {
     }
 
     public void setHusband(Husband husband) {
-        husband.setWife(this);
+        husband.setWife(this);                      // przypisujemy obecne Wife do Husband, który jest właścicielem relacji
         this.husband = husband;
     }
 }
